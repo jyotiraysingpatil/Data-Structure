@@ -269,6 +269,70 @@ do {
 	    return false; 
 	}
 
+	//delete at first pos
+	public void deleteFirst() {
+		if(head == null) {
+			return;
+		}
+		if(head.getNext() == head) {
+			head =null;
+		}
+		else {
+			Node last=head;
+			while(last.getNext() !=head) {
+				last=last.getNext();
+			}
+			last.setNext(head.getNext());
+			head=head.getNext();
+		}
+	}
+	
+	//delete last node
+	public void deleteLast() {
+		if(head==null) {
+			return;
+		}
+		if(head.getNext() == null) {
+			head =null;
+		}
+		else {
+			Node last=head;
+			Node prev=null;
+			while(last.getNext() !=head) {
+				prev=last;
+				last=last.getNext();
+			}
+			prev.setNext(head);	
+		}
+	}
+	
+	//delete middle ele
+	public void deleteMiddle() {
+		if(head == null || head.getNext() == head) {
+			return;
+		}
+		Node slow=head;
+		Node fast=head;
+		Node prev=null;
+		while(fast.getNext() != head && fast.getNext().getNext() !=head) {
+			prev=slow;
+			slow=slow.getNext();
+			fast=fast.getNext().getNext();
+			
+		}
+		if(prev == null) {
+			head=head.getNext();
+		}
+		else {
+			prev.setNext(slow.getNext());
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	}
