@@ -1,6 +1,17 @@
 
 public class DoubleLinkedList {
 	private Node head;
+private Node prev;
+
+
+
+	public Node getPrev() {
+	return prev;
+}
+
+public void setPrev(Node prev) {
+	this.prev = prev;
+}
 
 	public DoubleLinkedList() {
 
@@ -264,12 +275,112 @@ public class DoubleLinkedList {
 		return false;
 	}
 	
+	//insert at first pos
+	public void insertFirst(int data) {
+		Node newNode=new Node(data);
+		newNode.setNext(head);
+		head.setPrev(newNode);
+		head=newNode;
+	}
 	
+	//insert at last pos
+	public void insertLast(int data) {
+		Node newNode=new Node(data);
+		Node last=head;
+		while(last.getNext()!=null) {
+			last=last.getNext();
+		}
+		last.setNext(newNode);
+		newNode.setPrev(last);
+	}
 	
+	//insert at middle
+	public void insertMiddle(int data, int pos) {
+	    Node newNode = new Node(data);
+	    if (pos == 1) {
+	        if (head != null) {
+	            newNode.setNext(head);
+	            head.setPrev(newNode);
+	        }
+	        head = newNode;
+	        return;
+	    }
+	    
+	    Node current = head;
+	    int count = 1;
+	   
+	    while (current != null && count < pos - 1) {
+	        current = current.getNext();
+	        count++;
+	    }
+	    
+	    if (current == null) {
+	        System.out.println("Invalid position");
+	        return;
+	    }
+	    newNode.setNext(current.getNext());
+	    newNode.setPrev(current);
+	    if (current.getNext() != null) {
+	        current.getNext().setPrev(newNode);
+	    }
+	    current.setNext(newNode);
+	}
+
+	//delete first node
+	public void deleteFirst() {
+		Node tail=head;
+	    if (head == null) {
+	        return; 
+	    }
+	    
+	    head = head.getNext(); 
+	    
+	    if (head != null) {
+	        head.setPrev(null);
+	    } else {
+	        tail = null; 
+	    }
+	}
 	
+	//delete last node
+	public void deleteLast() {
+		if (head == null) {
+	        return; 
+	    }
+		Node last=head;
+		while(last.getNext()!=null) {
+			last=last.getNext();
+		}
+		if(last.getPrev()!=null) {
+			last.getPrev().setNext(null);
+		}
+		else {
+			head=null;
+		}
+	}
 	
+	//delete middle element
+	public void deleteMiddle(int pos) {
+		 if (head == null) {
+		        return; 
+		    }
+		 Node temp=head;
+		 int count=1;
+		 while(temp!=null && count<pos) {
+			 temp=temp.getNext();
+			 count ++;
+			 if(temp.getPrev()!=null) {
+				 temp.getPrev().setNext(temp.getNext());
+			 }
+			 else {
+				 head=temp.getNext();
+			 }
+			 if(temp.getNext()!=null) {
+				 temp.getNext().setPrev(temp.getPrev());
+			 }
+			
+		 }
+	}
 	
-	
-	
-	
+
 }

@@ -8,7 +8,9 @@ public class Main {
 			System.out.println("Enter choice:  1.insert data by position  2.insert data by val \n"
 					+ "3.delete by value   4.delete by position  5.count \n"
 					+ "6.remove duplicates  7.sorted in ascending order  8.sorted in descending order \n"
-					+ "9.max element   10.min element   11.search element ");
+					+ "9.max element   10.min element   11.search element   12.insert at first position\n"
+					+ "13.insert at last position   14.insert in middle   15.delete first\n"
+					+ "16.delete last  17.delete middle");
 			System.out.println("choice : ");
 			switch(sc.nextInt()) {
 			case 1:
@@ -67,6 +69,35 @@ public class Main {
 				int key=sc.nextInt();
 				System.out.println("enter the value to be searching  : "+ d.search(key));
 				break;
+			case 12:
+				d.insertFirst(6);
+				System.out.println("node added at first position ");
+				d.display();
+				break;
+			case 13:
+				d.insertLast(100);
+				System.out.println("node added at last position ");
+				d.display();
+				break;
+			case 14:
+				d.insertMiddle(5, 2);
+				System.out.println("node added at middle position ");
+				d.display();
+				break;
+			case 15:
+				d.deleteFirst();
+				System.out.println("first element deleted: ");
+				d.display();
+				break;
+			case 16:
+				d.deleteLast();
+				System.out.println("last element deleted: ");
+				d.display();
+				break;
+			case 17:
+				d.deleteMiddle(2);
+				System.out.println("delete middle element");
+				d.display();
 			}		
 		}
 
