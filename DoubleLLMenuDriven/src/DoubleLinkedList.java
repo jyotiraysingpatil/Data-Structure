@@ -118,16 +118,7 @@ public boolean deleteByVal(int data) {
 
 //delete by position
 public boolean deleteByPos(int pos) {
-	if(head == null || pos<=0) {
-		return false;
-	}
-	if(pos == 1) {
-		head=head.getNext();
-		if(head !=null) {
-			head.setPrev(null);
-		}
-		return true;
-	}
+	
 	Node del=head;
 	for(int i=1 ;i<pos ;i++) {
 		del=del.getNext();
@@ -237,5 +228,18 @@ public void max() {
 	}
 }
 
+
+public void reverse() {
+    Node prev = null;
+    Node current = head;
+    Node next = null;
+    while (current != null) {
+        next = current.getNext(); // Store the next node
+        current.setNext(prev);    // Reverse the link
+        prev = current;           // Move prev to this node
+        current = next;           // Move to the next node
+    }
+    head = prev; // Update the head to the new first node
+}
 
 }

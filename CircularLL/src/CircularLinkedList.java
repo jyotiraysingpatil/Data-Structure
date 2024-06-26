@@ -329,9 +329,18 @@ do {
 	}
 	
 	
-	
-	
-	
+	public void reverse() {
+	    Node prev = null;
+	    Node current = head;
+	    Node next = null;
+	 do {
+	        next = current.getNext(); // Store the next node
+	        current.setNext(prev);    // Reverse the link
+	        prev = current;           // Move prev to this node
+	        current = next;           // Move to the next node
+	    }while(current!=head);
+	    head = prev; // Update the head to the new first node
+	}
 	
 	
 	

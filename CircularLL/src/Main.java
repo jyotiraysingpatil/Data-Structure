@@ -85,7 +85,12 @@ public class Main {
 		System.out.println("after deleting the Middle  node  : ");
 		c.display();
 		break;
-		
+	case 15:
+		c.reverse();
+
+        System.out.println("Reversed list:");
+        c.display();
+		break;
 		}
 	}
 	}

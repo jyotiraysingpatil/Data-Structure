@@ -34,7 +34,7 @@ public class Main {
 				d.display();
 				break;
 			case 4:
-				d.deleteByPos(1);
+				d.deleteByPos(sc.nextInt());
 				System.out.println("element deleted by position : ");
 				d.display();
 				break;
@@ -59,7 +59,13 @@ public class Main {
 				break;
 			case 9:
 				d.max();
-				
+			
+				break;
+			case 10:
+				d.reverse();
+
+		        System.out.println("Reversed list:");
+		        d.display();
 				break;
 			}		
 		}
